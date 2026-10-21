@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0A0A0A;
+  --color-paper: #F6F5F0;
+  --color-cursor: #C4F135;
+  --color-depth: #141414;
+  --color-surface: #111111;
+  --color-surface-hero: #09090B;
+  --color-mist: #E2E1DC;
+  --color-ash: #7C7C76;
+  --color-ash-dark: #4A4A46;
+
+  --font-display: var(--font-syne), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+
+  --radius-bento: 24px;
+  --radius-panel: 36px;
+  --radius-pill: 9999px;
+}
+
+:root {
+  --ink: #0A0A0A;
+  --paper: #F6F5F0;
+  --cursor: #C4F135;
+  --depth: #141414;
+  --surface: #111111;
+  --surface-hero: #09090B;
+  --mist: #E2E1DC;
+  --ash: #7C7C76;
+  --ash-dark: #4A4A46;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F6F5F0;
+  overflow-x: hidden;
+  selection-background-color: #C4F135;
+  selection-color: #0A0A0A;
+}
+
+::selection {
+  background-color: #C4F135;
+  color: #0A0A0A;
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-syne), sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.font-body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-mono-tag {
+  font-family: var(--font-space-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Grid Backgrounds */
+.blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 17, 17, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.blueprint-grid-dark {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.halftone-dots {
+  background-image: radial-gradient(rgba(10, 10, 10, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+  background-position: -19px -19px;
+}
+
+/* Glass & Glow */
+.glass-light {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E2E1DC;
+}
+
+.glass-dark {
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ambient-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(196, 241, 53, 0.08) 0%, rgba(99, 102, 241, 0.04) 50%, transparent 100%);
+}
+
+.hairline-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 241, 53, 0.35), transparent);
+}
+
+/* Pulse animation */
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(2); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.pulse-beacon {
+  animation: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Marquee infinite scroll */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F6F5F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #E2E1DC;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7C7C76;
+}
